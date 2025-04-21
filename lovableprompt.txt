@@ -1,8 +1,10 @@
-i don't know but looking at these codes.. i am seeing a lot of things i am not suppose to be seeing...
+https://github.com/Gwinjoe/sporty-hero-bot.git
+
+and i don't know but looking at these codes.. i am seeing a lot of things i am not suppose to be seeing...
 i won't actually say anything right now because it might be useful and i might not be foreseeing things...
 
 all i would just do is to state my mission and you will check the code if it matches my mission...
-now i want the proxy to just serve as an intermediary between all the client and the server of the game... allowing everything else to go through as usual but looking at the websocket with the url i gave earlier and check if the stomp message request contains a destination: /queue/cashout or a destination: /queue/bet and act accordingly...
+now i want the proxy to just serve as an intermediary between all the client and the server of the game... allowing everything else to go through as usual but looking at the websocket with the url wss://www.sportybet.com/ws/ng/games/sporty-hero/v1/game and check if the stomp message request contains a destination: /queue/cashout or a destination: /queue/bet and act accordingly...
 once the round_end_wait message is detected from the server, it will delay the response by 2 seconds giving room for the notification server to send the notification to puppeteer to make the click before the 2 second completes and the message is released to the client....
 the reason for the 2 second delay is for the click to happen before the cashout button disappears that is before the round ends. so depending on how fast puppeteer can get the notification and click the button we can tweak the timing to be lesser.
 you will also leave room for a way we can intercept and change the content of the websocket message with the destination set to /queue/cashout using the modifycashoutcoefficient() function from the stomp-parser.js
@@ -18,7 +20,9 @@ don't forget to ask me questions where necessary
 and as for the interface  you are adding you could have just made the puppeteer script run in such a way that we  can click a button to start the automation with the click function of the puppeteer script and just keep on recalling the click function once it stops.
 and also pause the automation of the script by stoping the click from running.
 and then we can just view our balance from the interface.. i will provide a new selector where we can get the balance from in our pupeteer.. so the balance will be updated once our click function finishes running or when puppeteer clicks the cordinate immediately it gets the notification from the socket..
-so just leave a place for the balance and don't make use of the selector i used for the  first getbalance function.
+so just use a variable to store the balance and update it using the new selector once the game loads
+this is the selector to for the balance and this would be gotten after the game loads
+#app > div > div > div > div:nth-child(2) > div.game-header.px-3 > div.row.row-header.align-items-center.justify-content-between > div.align-items-center.back.d-flex.justify-content-center.pl-1.col-4 > div > div > span:nth-child(2)
 again don't forget to ask me questions to get further clarification
 
 so just crosscheck the code and do the refactor and give me a working code
